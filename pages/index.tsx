@@ -17,16 +17,16 @@ export default function Home() {
             <AvatarImage src="/images/avatar.png" className="rounded-full" />
             <AvatarFallback>MFR</AvatarFallback>
           </Avatar>
-          <CardTitle className="text-xl">Muhammad Fahri Ramadhan</CardTitle>
-          <div className="flex gap-6 text-white">
+          <CardTitle className="font-bold text-2xl">Muhammad Fahri Ramadhan</CardTitle>
+          <div className="flex gap-4 text-white">
             <NextLink href="https://github.com/fahri-r" className="border rounded-full p-2 hover:bg-white hover:text-black">
-              <GithubIcon className="size-6" />
+              <GithubIcon className="size-5" />
             </NextLink>
             <NextLink href="https://www.linkedin.com/in/fahri-r" className="border rounded-full p-2 hover:bg-white hover:text-black">
-              <LinkedinIcon className="size-6" />
+              <LinkedinIcon className="size-5" />
             </NextLink>
             <NextLink href="https://www.instagram.com/fahriramadhannnn" className="border rounded-full p-2 hover:bg-white hover:text-black">
-              <InstagramLogoIcon className="size-6" />
+              <InstagramLogoIcon className="size-5" />
             </NextLink>
           </div>
         </CardHeader>
