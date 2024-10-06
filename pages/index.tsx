@@ -53,7 +53,7 @@ export default function Home() {
             <MailIcon />
             <h2 className="text-xl font-bold">Drop me an Email</h2>
             <p>00.fahri.r@gmail.com</p>
-            <h3>Expect my rapid and eager reply – your message won't be kept waiting!</h3>
+            <h3>Expect my rapid and eager reply – your message won&apos;t be kept waiting!</h3>
           </div>
         </CardFooter>
       </Card >
