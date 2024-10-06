@@ -1,3 +1,4 @@
+import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -11,26 +12,29 @@ export default function Home() {
   return (
     <>
       <NextSeo title={`Muhammad Fahri Ramadhan - Software Engineer`} />
-      <Card className="pt-12 pb-4">
+      <Card className="pb-4">
+        <div className="flex w-full justify-end p-2">
+          <ModeToggle />
+        </div>
         <CardHeader className="flex flex-col items-center gap-y-2">
           <Avatar className="size-28">
             <AvatarImage src="/images/avatar.png" className="rounded-full" />
             <AvatarFallback>MFR</AvatarFallback>
           </Avatar>
           <CardTitle className="font-bold text-2xl text-center">Muhammad Fahri Ramadhan</CardTitle>
-          <div className="flex gap-4 text-white">
-            <NextLink href="https://github.com/fahri-r" className="border rounded-full p-2 hover:bg-white hover:text-black">
+          <div className="flex gap-4 dark:text-white text-black">
+            <NextLink href="https://github.com/fahri-r" className="border rounded-full p-2 hover:bg-accent">
               <GithubIcon className="size-5" />
             </NextLink>
-            <NextLink href="https://www.linkedin.com/in/fahri-r" className="border rounded-full p-2 hover:bg-white hover:text-black">
+            <NextLink href="https://www.linkedin.com/in/fahri-r" className="border rounded-full p-2 hover:bg-accent">
               <LinkedinIcon className="size-5" />
             </NextLink>
-            <NextLink href="https://www.instagram.com/fahriramadhannnn" className="border rounded-full p-2 hover:bg-white hover:text-black">
+            <NextLink href="https://www.instagram.com/fahriramadhannnn" className="border rounded-full p-2 hover:bg-accent">
               <InstagramLogoIcon className="size-5" />
             </NextLink>
           </div>
         </CardHeader>
-        <CardContent className="flex flex-col gap-y-4 text-white">
+        <CardContent className="flex flex-col gap-y-4 dark:text-white text-black">
           <Separator className="mb-5" />
           <div className="flex gap-2 items-center">
             <Link className="size-4" />
@@ -43,13 +47,13 @@ export default function Home() {
             <Button className="w-full h-12" variant={"outline"}>Resume & Curriculum Vitae</Button>
           </NextLink>
         </CardContent>
-        <CardFooter className="flex flex-col gap-y-4 text-white">
+        <CardFooter className="flex flex-col gap-y-4 dark:text-white text-black">
           <Separator className="mb-5" />
           <div className="flex gap-2 items-center">
             <PartyPopper className="size-4" />
             <h1 className="text-xl font-bold">Get in touch</h1>
           </div>
-          <div className="flex flex-col gap-2 border p-4 rounded-md bg-secondary-foreground">
+          <div className="flex flex-col gap-2 border p-4 rounded-md bg-accent">
             <MailIcon />
             <h2 className="text-xl font-bold">Drop me an Email</h2>
             <p>00.fahri.r@gmail.com</p>
