@@ -17,7 +17,7 @@ export default function Home() {
             <AvatarImage src="/images/avatar.png" className="rounded-full" />
             <AvatarFallback>MFR</AvatarFallback>
           </Avatar>
-          <CardTitle className="font-bold text-2xl">Muhammad Fahri Ramadhan</CardTitle>
+          <CardTitle className="font-bold text-2xl text-center">Muhammad Fahri Ramadhan</CardTitle>
           <div className="flex gap-4 text-white">
             <NextLink href="https://github.com/fahri-r" className="border rounded-full p-2 hover:bg-white hover:text-black">
               <GithubIcon className="size-5" />
