@@ -4,21 +4,28 @@ import { cn } from '~/utils';
 
 let { class: className, src, fallback, ...props } = $props();
 
-let loading = $state(false);
+let loading = $state(true);
+let loaded = $state(false);
+let failed = $state(false);
 onMount(() => {
 	const img = new Image();
 	img.src = src;
-	loading = true;
 
 	img.onload = () => {
 		loading = false;
+		loaded = true;
+	};
+
+	img.onerror = () => {
+		loading = false;
+		failed = true;
 	};
 });
 </script>
 
-{#if !loading}
+{#if loaded}
 	<img src={src} class={cn('aspect-square size-full rounded-full', className)} {...props} />
-{:else}
+{:else if failed || loading}
 	<div
 		class={cn('bg-muted flex aspect-square size-full items-center justify-center rounded-full', className)}
 		{...props}
