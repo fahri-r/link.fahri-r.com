@@ -1,8 +1,69 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import { Avatar } from '~/components/shared/avatar';
+import { Button } from '~/components/shared/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '~/components/shared/card';
 import Layout from '../layouts/Layout.astro';
+import { Link, MailIcon, PartyPopper } from '@lucide/svelte';
+import LucideIcon from '~/components/lucide-icon.svelte';
+import ModeToggle from '~/components/mode-toggle.svelte';
+import profile from '~/content/profile';
+import { Separator } from '~/components/shared/separator';
 ---
 
 <Layout>
-	<Welcome />
+	<Card class="pb-4">
+		<div class="flex w-full justify-end p-2">
+			<ModeToggle client:load />
+		</div>
+		<CardHeader class="flex flex-col items-center gap-y-2">
+			<Avatar
+				src={profile.imgUrl}
+				class="m-2 size-28"
+				width={200}
+				height={200}
+				alt={'Avatar'}
+				fallback={profile.initials}
+				client:load
+			/>
+			<CardTitle class="text-center text-2xl font-bold">{profile.name}</CardTitle>
+			<div class="flex gap-4 text-black dark:text-white">
+				{
+					profile.socials.map((x, i) => (
+						<Button href={x.href} variant={'outline'} class="rounded-full p-2" target="_blank">
+							<LucideIcon name={x.icon} class="!size-5" />
+						</Button>
+					))
+				}
+			</div>
+		</CardHeader>
+		<CardContent class="flex flex-col gap-y-4 text-black dark:text-white">
+			<Separator class="mb-5" />
+			<div class="flex w-full items-center gap-2">
+				<Link class="size-4" />
+				<h1 class="text-xl font-bold">Links</h1>
+			</div>
+			{
+				profile.links.map((x, i) => (
+					<Button class="h-12 w-full" variant={'outline'} href={x.href} target="_blank">
+						{x.label}
+					</Button>
+				))
+			}
+		</CardContent>
+		<CardFooter class="flex flex-col gap-y-4 text-black dark:text-white">
+			<Separator class="mb-5" />
+			<div class="flex w-full items-center gap-2">
+				<PartyPopper class="size-4" />
+				<h1 class="text-xl font-bold">Get in touch</h1>
+			</div>
+			<div class="bg-accent flex flex-col gap-2 rounded-md border p-4">
+				<MailIcon />
+				<h2 class="text-xl font-bold">Drop me an Email</h2>
+				<p>{profile.email}</p>
+				<h3 class="text-muted-foreground">
+					Expect my rapid and eager reply – your message won&apos;t be kept waiting!
+				</h3>
+			</div>
+		</CardFooter>
+	</Card>
 </Layout>

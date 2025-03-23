@@ -1,7 +1,6 @@
 ---
 import '../styles/app.css';
 import { ModeWatcher } from 'mode-watcher';
-import ModeToggle from '~/components/mode-toggle.svelte';
 ---
 
 <script is:inline>
@@ -35,9 +34,8 @@ import ModeToggle from '~/components/mode-toggle.svelte';
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
 	</head>
-	<body>
+	<body class="bg-background mx-auto min-h-screen max-w-xl px-6 py-12 antialiased">
 		<ModeWatcher client:load />
-		<ModeToggle client:load />
 		<slot />
 	</body>
 </html>
