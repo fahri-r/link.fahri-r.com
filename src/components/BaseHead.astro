@@ -1,17 +1,14 @@
 ---
-import {
-  SITE_DESCRIPTION,
-  SITE_NAME,
-  SITE_TITLE,
-} from "../consts";
+import profile from '~/content/profile';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from '../consts';
 
 export interface Props {
-  title?: string;
-  description?: string;
-  postMeta?: {
-    pubDate: Date;
-    tags: string[];
-  };
+	title?: string;
+	description?: string;
+	postMeta?: {
+		pubDate: Date;
+		tags: string[];
+	};
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -19,60 +16,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, postMeta } = Astro.props;
 
 function getTitle(title?: string) {
-  return title ? `${title} | ${SITE_NAME}` : SITE_TITLE;
+	return title ? `${title} | ${SITE_NAME}` : SITE_TITLE;
 }
 
 function getDescription(description?: string) {
-  return description ? description : SITE_DESCRIPTION;
-}
-
-function getOgImage({
-  title,
-  postMeta,
-}: {
-  title?: string;
-  postMeta?: {
-    pubDate: Date;
-    tags: string[];
-  };
-}) {
-  const encode = (str: string) => encodeURIComponent(encodeURIComponent(str));
-  const meta = ["example.com"];
-
-  if (postMeta) {
-    meta.push(
-      postMeta.pubDate.toLocaleDateString("en-gb", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      })
-    );
-    meta.push(...postMeta.tags);
-  }
-
-  return [
-    // Composed Image Transformations
-    `w_1920,h_933,q_100`,
-
-    // TITLE
-    `l_text:Roboto_72_bold:${encode(title ? title : SITE_TITLE)},co_rgb:ffe4e6,c_fit,w_1400,h_240`,
-    // Positioning
-    `fl_layer_apply,g_south_west,x_150,y_180`,
-
-    // META
-    `l_text:Roboto_48:${encode(meta.join(" • ").toUpperCase())},co_rgb:ffe4e680,c_fit,w_1400`,
-    // Positioning
-    `fl_layer_apply,g_south_west,x_150,y_100`,
-
-    // PROFILE IMAGE
-    // Transformations
-    `c_thumb,g_face,r_max,w_380,h_380,q_100`,
-    // Positioning
-    `fl_layer_apply,w_180,g_north_west,x_150,y_100`,
-
-    // BG
-    `placeholder-social.png`,
-  ].join("/");
+	return description ? description : SITE_DESCRIPTION;
 }
 ---
 
@@ -98,11 +46,11 @@ function getOgImage({
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={getTitle(title)} />
 <meta property="og:description" content={getDescription(description)} />
-<meta property="og:image" content={getOgImage({ title, postMeta })} />
+<meta property="og:image" content={profile.imgUrl} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={getTitle(title)} />
 <meta property="twitter:description" content={getDescription(description)} />
-<meta property="twitter:image" content={getOgImage({ title, postMeta })} />
+<meta property="twitter:image" content={profile.imgUrl} />
