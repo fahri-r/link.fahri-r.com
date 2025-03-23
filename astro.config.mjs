@@ -5,12 +5,15 @@ import svelte from '@astrojs/svelte';
 import tailwindcss from '@tailwindcss/vite';
 import vercelStatic from '@astrojs/vercel/static';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
-	integrations: [svelte()],
-	vite: {
-		plugins: [tailwindcss()]
-	},
-	output: 'static',
-	adapter: vercelStatic(),
+	site: 'https://link.fahri-r.com', 
+    integrations: [svelte(), sitemap()],
+    vite: {
+        plugins: [tailwindcss()]
+    },
+    output: 'static',
+    adapter: vercelStatic()
 });
